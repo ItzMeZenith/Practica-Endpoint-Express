@@ -2,6 +2,7 @@ import express from "express"; // Hacer npm i express + npm i nodemon
 
 const app = express();
 const port = 3000;
+let personas = []
 
 app.get('/', (req, res) => { // Endpoint "/", verbo GET
     let mensaje = "Bienvenido a mi servidor"
@@ -31,6 +32,11 @@ app.get('/productos', (req, res) => { // Endpoint "/", verbo GET
 app.get('/materias', (req, res) => { // Endpoint "/", verbo GET
     let materias = [ {nombre: "Matematica"}, {nombre: "Lengua"} ]
     res.json(materias);
+})
+
+app.post('/agregarPersona', (req, res) => { // Endpoint "/", verbo GET
+    personas.push(req.body) 
+    res.json(personas);
 })
 
 app.listen(port, () => { // inicio el servicio WEB (escuchar)
